@@ -12,15 +12,15 @@ pipeline {
         stage('Docker Build') {
             steps {
                 echo 'Docker Compose ke zariye frontend aur backend images fresh build ho rahi hain...'
-                sh 'sudo docker compose build'
+                sh ' docker compose build'
             }
         }
 
         stage('Deploy Application') {
             steps {
                 echo 'Purane containers down karke naye versions live kiye ja rahe hain...'
-                sh 'sudo docker compose down'
-                sh 'sudo docker compose up -d'
+                sh ' docker compose down'
+                sh ' docker compose up -d'
             }
         }
     }
@@ -31,10 +31,10 @@ pipeline {
             cleanWs()
         }
         success {
-            echo '🎉 Mubarak ho! Project Jenkins ke zariye successfully deploy ho gaya hai.'
+            echo 'CONGRATS! Project IS SUCCESSFULLY DEPLOYED USING JENKINS.'
         }
         failure {
-            echo '❌ Pipeline fail ho gayi. Console output check karein.'
+            echo '❌ Pipeline FAIL, CHECK CONSOLE OUTPUT.'
         }
     }
 }
